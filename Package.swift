@@ -1,8 +1,11 @@
-// swift-tools-version:4.0
+// swift-tools-version:5.1
 import PackageDescription
 
 let package = Package(
     name: "S3Kit",
+    platforms: [
+       .macOS(.v10_14)
+    ],
     products: [
         .library(name: "S3Kit", targets: ["S3Kit"]),
         .library(name: "S3Signer", targets: ["S3Signer"]),
@@ -12,7 +15,7 @@ let package = Package(
         .package(url: "https://github.com/apple/swift-nio.git", from: "2.5.0"),
         .package(url: "https://github.com/vapor/vapor.git", from: "4.0.0-beta.1"),
         .package(url: "https://github.com/vapor/open-crypto.git", from: "4.0.0-alpha.2"),
-        .package(url: "https://github.com/swift-server/async-http-client.git", from: "1.0.0-alpha.2"),
+        .package(url: "https://github.com/swift-server/async-http-client.git", from: "1.0.0"),
         .package(url: "https://github.com/Einstore/HTTPMediaTypes.git", from: "0.0.1"),
         .package(url: "https://github.com/Einstore/WebErrorKit.git", from: "0.0.1"),
         .package(url: "https://github.com/LiveUI/XMLCoding.git", from: "0.1.0")
