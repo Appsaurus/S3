@@ -31,7 +31,10 @@ extension S3 {
                 body: body
             )
             let client = HTTPClient(eventLoopGroupProvider: .shared(eventLoop))
-            return client.execute(request: request)
+            return client.execute(request: request).flatMapThrowing { res in
+                try client.syncShutdown()
+                return res
+            }
         } catch {
             return eventLoop.makeFailedFuture(error)
         }
